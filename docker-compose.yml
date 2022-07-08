@@ -1,9 +1,9 @@
 version: "3.7"
 services:
   bck_node_mongo_clean:
-    image: kathemica/bck_node_mongo_clean:latest
-    hostname: node-backend
-    container_name: node-backend
+    image: kathemica/mqtt_node_api:latest
+    hostname: node-api
+    container_name: node-api
     restart: always
     volumes:
       - ./certs:/usr/app/certs
@@ -12,13 +12,13 @@ services:
       - SENDGRID_API_KEY= SET YOUR API KEY HERE
       - JWT_SECRET= WRITE A RANDOM STRING HERE
       - CA_TOKEN_MONGO= WRITE YOUR CA.cert PASSWORD HERE
-      - MONGO_URL= INSERT YOUR MONGO_URL HERE
+      - MONGO_AUTH_SERVER= INSERT YOUR MONGO_URL HERE
       - MAIL_OWNER= NAME A MAIL_OWNER HERE
       - MAIL_USERNAME= SENDGRID USERNAME HERE
       - MAIL_FROM= SENDGRID MAIL FROM HERE
-      - IS_TLS_MONGO= Should I connect with mongodb as TLS?
+      - IS_TLS_MONGO= Should I connect with mongodb as TLS/SSL?
       - DB_NAME=INSERT YOUR DATABASE NAME HERE
-      - isHTTPS=Will I to connect with HTTPS?
+      - isHTTPS=Will I'll be serving https services?
     ports:
       - 8051:8051
       - 443:443

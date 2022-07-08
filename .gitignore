@@ -111,5 +111,6 @@ dist
 /certs/client.crt
 /build
 /.env
+/.env.prod
 /docker-compose.prod.yml
 /mongo/db

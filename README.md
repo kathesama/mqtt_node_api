@@ -2,27 +2,27 @@
 
 [<img src="https://img.shields.io/badge/Linkedin-kathesama-blue?style=for-the-badge&logo=linkedin">](https://www.linkedin.com/in/kathesama)
 <br>
+![IntellijIdea](https://img.shields.io/badge/Made%20for-IntellijIdea-1f425f.svg?style=for-the-badge)
 ![MongoDB](https://img.shields.io/badge/-MongoDB-009900?logo=mongodb&logoColor=white&style=for-the-badge)
 ![NodeJS](https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white)
-![VSCode](https://img.shields.io/badge/Made%20for-VSCode-1f425f.svg?style=for-the-badge)
 <br>
-[![GitHub issues](https://img.shields.io/github/issues/kathesama/bck_node_mongo_clean?style=plastic)](https://github.com/kathesama/bck_node_mongo_clean/issues)
-[![GitHub forks](https://img.shields.io/github/forks/kathesama/bck_node_mongo_clean?style=plastic)](https://github.com/kathesama/bck_node_mongo_clean/network)
-[![GitHub stars](https://img.shields.io/github/stars/kathesama/bck_node_mongo_clean?style=plastic)](https://github.com/kathesama/bck_node_mongo_clean/stargazers)
+[![GitHub issues](https://img.shields.io/github/issues/kathesama/mqtt_node_api?style=plastic)](https://github.com/kathesama/mqtt_node_api/issues)
+[![GitHub forks](https://img.shields.io/github/forks/kathesama/mqtt_node_api?style=plastic)](https://github.com/kathesama/mqtt_node_api/network)
+[![GitHub stars](https://img.shields.io/github/stars/kathesama/mqtt_node_api?style=plastic)](https://github.com/kathesama/mqtt_node_api/stargazers)
 <br>
-![GitHub last commit](https://img.shields.io/github/last-commit/kathesama/bck_node_mongo_clean?color=red&style=plastic)
-![GitHub version commits](https://img.shields.io/github/commits-since/kathesama/bck_node_mongo_clean/V2.0.0.svg?color=yellow&style=plastic)
-![GitHub top language](https://img.shields.io/github/languages/top/kathesama/bck_node_mongo_clean?style=plastic)
+![GitHub last commit](https://img.shields.io/github/last-commit/kathesama/mqtt_node_api?color=red&style=plastic)
+![GitHub version commits](https://img.shields.io/github/commits-since/kathesama/mqtt_node_api/V2.0.0.svg?color=yellow&style=plastic)
+![GitHub top language](https://img.shields.io/github/languages/top/kathesama/mqtt_node_api?style=plastic)
 <br>
 ![Maintaned](https://img.shields.io/badge/Maintained%3F-yes-green.svg?style=plastic)
 ![OWASP](https://img.shields.io/badge/OWASP%3F-yes-green.svg?style=plastic)
 ![OWASP](https://img.shields.io/badge/CleanCode%3F-yes-green.svg?style=plastic)
-[![GitHub license](https://img.shields.io/github/license/kathesama/bck_node_mongo_clean?style=plastic)](https://github.com/kathesama/bck_node_mongo_clean/blob/main/LICENSE)
-![GitHub repo size](https://img.shields.io/github/repo-size/kathesama/bck_node_mongo_clean?style=plastic)
+[![GitHub license](https://img.shields.io/github/license/kathesama/mqtt_node_api?style=plastic)](https://github.com/kathesama/mqtt_node_api/blob/main/LICENSE)
+![GitHub repo size](https://img.shields.io/github/repo-size/kathesama/mqtt_node_api?style=plastic)
 <br>
 
-# bck_node_mongo_clean
-Backend for Farm proyect
+# mqtt_node_api
+Backend for Farm project
 
 Para crear un proyecto desde cero con Husky, abrir una consola y:
 1. Crear una carpeta:
@@ -125,7 +125,7 @@ Comandos útiles de Git.
 > docker buildx create --name mybuilderconfig --use
 
 3. Build the image:
-> docker buildx build --platform linux/amd64,linux/arm64,linux/arm/v7 -f Dockerfile -t kathemica/bck_node_mongo_clean:1.0.0 --push .
+> docker buildx build --platform linux/amd64,linux/arm64,linux/arm/v7 -f Dockerfile -t kathemica/mqtt_node_api:1.0.0 --push .
 
 ---
 # Running container
@@ -149,7 +149,7 @@ docker run -d \
 -e DB_NAME= "INSERT YOUR DATABASE NAME HERE" \
 -e isHTTPS= "Will I to connect with HTTPS?" \
 -v $(pwd)/certs:/usr/app/certs \
-kathemica/bck_node_mongo_clean:1.0.1
+kathemica/mqtt_node_api:1.0.1
 
 ```
 *$(pwd)*: is the actual path.
@@ -180,11 +180,15 @@ You must provide certificates to the server in each path at folder, those are fr
 - KEY_CERT_MONGO= './certs/client.key'
 - PEM_CERT_MONGO= './certs/client.pem'
 
-Aditionally you must indicate in an environment variable to turn on https at docker:
+Additionally, you must indicate in an environment variable to turn on https at docker:
 - IS_TLS_MONGO=true
 
 ### **NOTE**:
-Only for connections with **atlas** you must enable *IS_TLS_MONGO=true*, with only that will work perfectly.
+Only for connections with **Atlas** you must enable *IS_TLS_MONGO=true*, with only that will work perfectly.
+
+## Building image
+Build Docker image for Raspberry Pi 4 Model B (https://www.mongodb.com/community/forums/t/core-dump-on-mongodb-5-0-on-rpi-4/115291/14)
+1. > docker buildx build --platform linux/amd64,linux/arm64 -f Dockerfile -t kathemica/mqtt_node_api:1.0.0 --push .
 
 ## Dev ambient settings
 **Username**: someMail@dominiom.com

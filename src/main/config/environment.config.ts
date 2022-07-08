@@ -18,7 +18,7 @@ export const environmentConfig = (): any => {
       PORT: Joi.number().default(8080),
       isHTTPS: Joi.boolean().default(false),
       SECURE_PORT: Joi.number().default(443),
-      MONGO_URL: Joi.string().default('').description('Mongo DB url').required(),
+      MONGO_AUTH_SERVER: Joi.string().default('').description('Mongo DB url').required(),
       // eslint-disable-next-line quotes
       DB_NAME: Joi.string().default(`prueba`).description('Mongo DB name'),
       JWT_SECRET: Joi.string().default('').description('JWT secret key'),
@@ -30,10 +30,10 @@ export const environmentConfig = (): any => {
       MAIL_USERNAME: Joi.string().description('username for email server'),
       MAIL_FROM: Joi.string().description('the from field in the emails sent by the app'),
       SENDGRID_API_KEY: Joi.string().default('').description('SENDGRID_API_KEY'),
-      CA_CERT_MONGO: Joi.string().default('').description('The path for CA Cert file'),
-      KEY_CERT_MONGO: Joi.string().default('').description('The path for Key Cert file'),
-      PEM_CERT_MONGO: Joi.string().default('').description('The path for PEM Cert file'),
-      CA_TOKEN_MONGO: Joi.string().default('').description('The key for open CA cert file'),
+      CA_CERT_MONGO: Joi.string().optional().default('').description('The path for CA Cert file').allow('', null),
+      KEY_CERT_MONGO: Joi.string().optional().default('').description('The path for Key Cert file').allow('', null),
+      PEM_CERT_MONGO: Joi.string().optional().default('').description('The path for PEM Cert file').allow('', null),
+      CA_TOKEN_MONGO: Joi.string().optional().default('').description('The key for open CA cert file').allow('', null),
       IS_TLS_MONGO: Joi.boolean().default(false).description('Should I Use TLS for mongo?'),
       GOOGLE_CLIENT_ID: Joi.string().description('Cliend ID for google Auth API '),
       GOOGLE_SECRET_ID: Joi.string().description('The key for access Google API Service'),
@@ -78,7 +78,7 @@ export const environmentConfig = (): any => {
   };
 
   const mongooseConfig = {
-    URL: envVars.MONGO_URL + (envVars.NODE_ENV === 'test' ? '-test' : ''),
+    URL: envVars.MONGO_AUTH_SERVER + (envVars.NODE_ENV === 'test' ? '-test' : ''),
     IS_TLS_MONGO: envVars.IS_TLS_MONGO,
     CA_CERT: envVars.CA_CERT_MONGO,
     CA_TOKEN: envVars.CA_TOKEN_MONGO,

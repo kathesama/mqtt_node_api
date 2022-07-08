@@ -3,7 +3,7 @@
 # This state compile our TypeScript to get the JavaScript code
 #
 # FROM node:16.3.0
-FROM node:stretch-slim
+FROM node:latest
 
 WORKDIR /usr/app
 
@@ -36,7 +36,7 @@ RUN rm .eslintignore
 RUN mkdir ./src
 RUN mv ./dist/* ./src/
 RUN rm -rf ./dist
-COPY .env.prod ./.env
+COPY .env.example ./.env
 
 # FINISHING
 EXPOSE 8051

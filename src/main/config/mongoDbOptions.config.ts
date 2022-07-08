@@ -8,8 +8,10 @@ const readFile = (fileToRead: any): any => {
 
   if (environmentConfig().mongooseConfig.IS_TLS_MONGO === true) {
     try {
-      if (fs.statSync(fileToRead)) {
+      if (!isEmpty(fileToRead) && fs.statSync(fileToRead)) {
         file = fs.readFileSync(fileToRead, 'utf-8');
+      }else {
+        return null;
       }
     } catch (err) {
       logger.warn(`Mongo TLS is true but no file provided: ${fileToRead}, maybe admin is trying to connect with Atlas!!`);
