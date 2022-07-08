@@ -1,0 +1,59 @@
+{
+  "root": true,
+  "env": {
+    "node": true,
+    "jest": true,
+    "es6": true
+    // "babel": true
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended"
+  ],
+  "parserOptions": {
+    "project": ["./tsconfig.json"],
+    "tsconfigRootDir": "./",
+    "ecmaVersion": 2020,
+    "sourceType": "module",
+    "allowImportExportEverywhere": false,
+    "ecmaFeatures": {
+      "globalReturn": false,
+      "experimentalObjectRestSpread": true
+    },
+    "requireConfigFile": false
+  },
+  "plugins": [
+    "jest",
+    "prettier",
+    "@typescript-eslint",
+    "@babel"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "ignorePatterns": [".babelrc", "*config.ts", "*config.js", "coverage/**/*"],
+  "rules": {
+    "no-console": "error",
+    "func-names": "off",
+    "no-underscore-dangle": "off",
+    "consistent-return": "off",
+    "jest/expect-expect": "off",
+    "@typescript-eslint/no-redeclare": "off",
+    "@typescript-eslint/semi": [2, "always"],
+    "@typescript-eslint/strict-boolean-expresions": "off",
+    "@typescript-eslint/consistent-type-definitions": "off",
+    "@typescript-eslint/comma-spacing": "error",
+    "@typescript-eslint/return-await": "error",
+    "@typescript-eslint/no-explicit-any": "off",
+    "@typescript-eslint/prefer-nullish-coalescing": "error",
+    "import/prefer-default-export": "off",
+    "prettier/prettier": ["error", { "endOfLine": "auto"}, { "usePrettierrc": true }],
+    "quotes": [1, "single", { "avoidEscape": true }]
+  },
+  "overrides": [
+    {
+      "files": ["*.ts", "*.tsx"], // Your TypeScript files extension
+      "parserOptions": {
+        "project": ["./tsconfig.json"] // Specify it only for TypeScript files
+      }
+    }
+  ]
+}
