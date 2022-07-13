@@ -21,11 +21,13 @@ const password = (value: any, helpers: any) => {
   return value;
 };
 
+/**
+ * search in array all occurs from another array and return if match
+ * */
 const acceptedLanguage = (value: any, helpers: any) => {
-  if (!Object.values(languageTypes).includes(value)) {
-    return helpers.message(`${value} is an invalid language`);
-  }
-  return value;
+  const index = value.indexOf(';') > -1 ? value.indexOf(';') : value.length;
+  const match = new Array(...value.slice(0, index).split(/,|-|_/)).filter((item: string) => Object.values(languageTypes).includes(item.trim()));
+  return match !== null ? match[0] : helpers.message('"{{#label}}" id not supported');
 };
 
 const isValidResetToken = async (key: string, helpers: any) => {

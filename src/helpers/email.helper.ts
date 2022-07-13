@@ -13,8 +13,8 @@ sgMail.setApiKey(environmentConfig().emailConfig.SENDGRID_API_KEY);
  */
 const sendEmail = async (to = '', subject = '', text = ''): Promise<any> => {
   const msg = {
-    from: environmentConfig().emailConfig.FROM,
     to,
+    from: environmentConfig().emailConfig.FROM,
     subject,
     text,
   };
