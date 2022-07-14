@@ -5,6 +5,7 @@ export interface HttpResponse {
   statusCode: StatusCodes;
   body: any;
   cookie?: Cookie;
+  message?: string;
 }
 
 export interface HttpRequest {
@@ -17,4 +18,5 @@ export interface HttpRequest {
   language?: any;
   user?: any;
   cookies?: any;
+  t?: any;
 }

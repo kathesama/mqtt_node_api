@@ -46,7 +46,7 @@ export interface findOneAndUpdateTokenInterface {
 
 export interface handleTokensInterface {
   // eslint-disable-next-line no-unused-vars
-  handleTokens: (user: any, fingerprint: string, option: string, deletePreviousTokens: boolean) => Promise<ITokenModelInterface>;
+  handleTokens: (user: any, fingerprint: string, option: string, t: any, deletePreviousTokens: boolean) => Promise<ITokenModelInterface>;
 }
 
 export interface handleVerifyEmailTokensInterface {

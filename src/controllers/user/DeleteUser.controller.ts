@@ -15,12 +15,13 @@ export class DeleteUserFactorie implements ControllerInterface {
 
   async handle(httpRequest: HttpRequest): Promise<HttpResponse> {
     try {
+      const { t } = httpRequest;
       const { userId } = httpRequest.params;
 
       const userDb: any = await UserService.getById(userId);
 
       if (isNil(userDb) || isEmpty(userDb)) {
-        return badRequestHelper(new Error(`${userId} doesn't exists`));
+        return badRequestHelper(new Error(t('msg_user_doesnt_exists', userId)));
       }
 
       const handledUserRegister: any = await this.deleteUser.delete(userId);

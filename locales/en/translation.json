@@ -1,0 +1,16 @@
+{
+  "msg_test": "hello world",
+  "msg_rate_limit": "You are doing that too much. Please try again in while.",
+  "msg_delete_role_id_doesnt_exists": "ID: {{id}} doesn't exists",
+  "msg_user_doesnt_exists": "User:{{userId}} doesn't exists",
+  "msg_account_disabled": "Account is disabled or User was deleted",
+  "msg_user_not_found": "User not found",
+  "msg_invalid_password": "Invalid password",
+  "msg_no_user_logout": "There is not user to logout",
+  "msg_authorization_token_is_required": "Authorization token is required",
+  "msg_authorization_token_is_invalid": "Token is invalid",
+  "msg_accept_language_is_required": "accept-language is required",
+  "msg_unsupported_accept_language": "Language [{{acceptedLanguage}}] not supported",
+  "msg_total_general_reached": "User: {{email}} have reached the maximum number of tokens per user. Close at least one open session for enable to open another more.",
+  "msg_exceed_tokens_each": "User {{email}} was trying to create more than available tokens for the same device."
+}

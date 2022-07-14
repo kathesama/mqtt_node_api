@@ -9,7 +9,6 @@ const fingerprintMiddleware = (req: any, res: any, next: any) => {
     parameters: [
       // Defaults
       fingerPrint.acceptHeaders,
-      // Fingerprint.geoip,
 
       // personalized params
       (next: any) => {
@@ -17,11 +16,12 @@ const fingerprintMiddleware = (req: any, res: any, next: any) => {
           useragent: req.headers['user-agent'],
         });
       },
+      /* disabled for development
       (next: any) => {
-        next(null, {
-          acceptLanguage: req.headers['accept-language'],
+         next(null, {
+           acceptLanguage: req.headers['accept-language'],
         });
-      },
+       }, */
       (next: any) => {
         next(null, {
           id: req.ip,

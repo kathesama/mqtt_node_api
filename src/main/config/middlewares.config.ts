@@ -2,11 +2,12 @@
 import { Express } from 'express';
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
-import { bodyParser, urlEncoded, ddos, helmet, fingerprint, apiRatelimit } from '../middlewares';
-// import { noCache } from '../middlewares/noChache.middleware';
 import nocache from 'nocache';
+import { bodyParser, urlEncoded, ddos, helmet, fingerprint, apiRatelimit, language } from '../middlewares';
+// import { noCache } from '../middlewares/noChache.middleware';
 
 export default (app: Express): void => {
+  app.use(language);
   app.use(fingerprint);
   app.use(cookieParser());
   app.use(bodyParser);

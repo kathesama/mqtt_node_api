@@ -8,6 +8,7 @@ declare global {
       user?: Record<string, any>;
       language?: Record<string, any>;
       fingerprint?: string;
+      t?: any;
     }
   }
 }
