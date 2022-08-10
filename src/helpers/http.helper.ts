@@ -6,6 +6,7 @@ import { HttpRequest, HttpResponse } from '../interfaces/http.interface';
 import { GenericError } from '../interfaces/http/errors/GenericError';
 import { Cookie } from 'nodemailer/lib/fetch/cookies';
 import { environmentConfig } from '../main/config';
+import { t } from '../main/utils/i18next.config';
 
 export const serverErrorHelper = (error: Error): HttpResponse => {
   const name = 'Internal Server Error';
@@ -18,7 +19,7 @@ export const serverErrorHelper = (error: Error): HttpResponse => {
 
 export const badRequestHelper = (error: Error | string, name?: string, statusCode?: number): HttpResponse => {
   if (isNil(name)) {
-    name = 'Missing Paramenter ';
+    name = 'Missing Parameter';
   }
 
   if (isNil(statusCode)) {
@@ -33,7 +34,7 @@ export const badRequestHelper = (error: Error | string, name?: string, statusCod
 
 export const clientRequestHelper = (res: Response, errCode: number, error: string): Response => {
   const responseObject = {
-    name: 'Client error response ',
+    name: t('msg_client_request_error'),
     statusCode: errCode,
     content: error,
     timestamp: new Date().toISOString(),
@@ -59,7 +60,7 @@ export const successHelperWithCookie = (data: any, cookie?: Cookie): HttpRespons
  */
 export const checkAutorizationHeader = (httpRequest: HttpRequest): any => {
   try {
-    const { t } = httpRequest;
+    // const { t } = httpRequest;
     let token = '';
     if (environmentConfig().serverConfig.IS_COOKIE_HTTPONLY_BASED) {
       token = `Bearer ${httpRequest.cookies['session']}`;
@@ -87,7 +88,7 @@ export const checkAutorizationHeader = (httpRequest: HttpRequest): any => {
  */
 export const checkLanguageHeader = (req: HttpRequest): any => {
   try {
-    const { t } = req;
+    // const { t } = req;
     if (isNil(req.headers['accept-language']) || isNaN(req.headers['accept-language']) || isEmpty(req.headers['accept-language'])) {
       // eslint-disable-next-line prettier/prettier
       throw new GenericError(t('msg_accept_language_is_required'), StatusCodes.PRECONDITION_FAILED, ReasonPhrases.PRECONDITION_FAILED);

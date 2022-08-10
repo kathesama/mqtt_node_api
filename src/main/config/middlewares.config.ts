@@ -3,11 +3,12 @@ import { Express } from 'express';
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
 import nocache from 'nocache';
-import { bodyParser, urlEncoded, ddos, helmet, fingerprint, apiRatelimit, language } from '../middlewares';
+import { bodyParser, urlEncoded, ddos, helmet, fingerprint, apiRateLimit } from '../middlewares';
+import { i18nMiddleware } from '../utils/i18next.config';
 // import { noCache } from '../middlewares/noChache.middleware';
 
 export default (app: Express): void => {
-  app.use(language);
+  app.use(i18nMiddleware);
   app.use(fingerprint);
   app.use(cookieParser());
   app.use(bodyParser);
@@ -15,7 +16,7 @@ export default (app: Express): void => {
   // app.use(cors);
   app.use(cors({ origin: '*', credentials: true }));
   app.use(ddos.express);
-  app.use(apiRatelimit);
   app.use(helmet());
   app.use(nocache());
+  app.use(apiRateLimit);
 };

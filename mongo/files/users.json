@@ -1,0 +1,20 @@
+[{
+  "_id": {
+    "$oid": "610f5d200c2f2438cc1d5836"
+  },
+  "role": "ADMIN_ROLE",
+  "isActive": true,
+  "password": "$2a$10$g9XsbUX.2Uzqjjx7bQkIi.hVmZK7nPQB/7NcOISZ0UHoQpGW/9qHO",
+  "email": "somevalidmail@mailprovider.com",
+  "firstName": "Admin",
+  "lastName": "Admin",
+  "age": 0,
+  "image": "",
+  "createdAt": {
+    "$date": "2021-08-08T04:27:13.016Z"
+  },
+  "updatedAt": {
+    "$date": "2021-08-08T04:27:13.016Z"
+  },
+  "__v": 0
+}]

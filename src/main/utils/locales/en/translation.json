@@ -12,5 +12,6 @@
   "msg_accept_language_is_required": "accept-language is required",
   "msg_unsupported_accept_language": "Language [{{acceptedLanguage}}] not supported",
   "msg_total_general_reached": "User: {{email}} have reached the maximum number of tokens per user. Close at least one open session for enable to open another more.",
-  "msg_exceed_tokens_each": "User {{email}} was trying to create more than available tokens for the same device."
+  "msg_exceed_tokens_each": "User {{email}} was trying to create more than available tokens for the same device.",
+  "msg_client_request_error": "Client error response"
 }

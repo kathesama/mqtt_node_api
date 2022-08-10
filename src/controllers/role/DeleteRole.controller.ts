@@ -2,6 +2,7 @@ import { ControllerInterface } from '../../interfaces/controller.interface';
 import { badRequestHelper, serverErrorHelper, successHelper } from '../../helpers/http.helper';
 import { HttpRequest, HttpResponse } from '../../interfaces/http.interface';
 import { logger } from '../../main/config';
+import { t } from '../../main/utils/i18next.config';
 
 import roleService from '../../domain/services/role.service';
 import { DeleteRoleInterface } from '../../interfaces/useCaseDTO/Role.interfaces';
@@ -13,7 +14,7 @@ export class DeleteRoleFactorie implements ControllerInterface {
 
   async handle(httpRequest: HttpRequest): Promise<HttpResponse> {
     try {
-      const { t } = httpRequest;
+      // const { t } = httpRequest;
       const id = httpRequest.params.id;
 
       const roleDb: any = await roleService.getById(id);

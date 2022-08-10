@@ -20,7 +20,8 @@
       "globalReturn": false,
       "experimentalObjectRestSpread": true
     },
-    "requireConfigFile": false
+    "requireConfigFile": false,
+    "extraFileExtensions": [".json"]
   },
   "plugins": [
     "jest",

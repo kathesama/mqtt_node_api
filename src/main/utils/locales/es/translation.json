@@ -12,5 +12,6 @@
   "msg_accept_language_is_required": "accept-language es requerido",
   "msg_unsupported_accept_language": "Idioma [{{acceptedLanguage}}] no soportado",
   "msg_total_general_reached": "Usuario: {{email}} ha alcanzado la cuota máxima de tokens por usuario. Cierre al menos una sesión abierta para habilitar otro inicio de sesión.",
-  "msg_exceed_tokens_each": "El usuario {{email}} estuvo queriendo exceder el máximo de tokens por dispositivo."
+  "msg_exceed_tokens_each": "El usuario {{email}} estuvo queriendo exceder el máximo de tokens por dispositivo.",
+  "msg_client_request_error": "Respuesta de error al cliente"
 }

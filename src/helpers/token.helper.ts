@@ -11,6 +11,7 @@ import { tokenTypes } from '../domain/enums/token.enum';
 import { GenericError } from '../interfaces/http/errors';
 import { isNil } from 'lodash';
 import { TokenModel } from '../domain/models/Token.model';
+import { t } from '../main/utils/i18next.config';
 
 /**
  * Generate token
@@ -154,7 +155,7 @@ const getActualToken = async (user: string, fingerprint: string, tokenType: stri
  * @returns {Promise<Object>}
  */
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-export const handleTokens = async (user: any, fingerprint: string, option: string, t: any, deletePreviousTokens = false): Promise<any> => {
+export const handleTokens = async (user: any, fingerprint: string, option: string, deletePreviousTokens = false): Promise<any> => {
   // validate that the user does not have more than 5 refresh token, nor more than 1 RT per device
   const queries = {
     ALLTotalTokensByUser: { user: user, type: { $in: [tokenTypes.REFRESH, tokenTypes.ACCESS] }, blacklisted: false },
@@ -164,8 +165,8 @@ export const handleTokens = async (user: any, fingerprint: string, option: strin
   };
 
   const messages = {
-    totalGeneralReached: t('msg_total_general_reached', user.email),
-    totalByFingerprintReached: t('msg_exceed_tokens_each', user.email),
+    totalGeneralReached: String(t('msg_total_general_reached', user.email)),
+    totalByFingerprintReached: String(t('msg_exceed_tokens_each', user.email)),
   };
 
   // eslint-disable-next-line prefer-const

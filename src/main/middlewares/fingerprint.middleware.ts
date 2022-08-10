@@ -34,6 +34,7 @@ const fingerprintMiddleware = (req: any, res: any, next: any) => {
       },
     ],
   };
+
   return Fingerprint(params)(req, res, next);
 };
 
