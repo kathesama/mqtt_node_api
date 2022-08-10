@@ -1,7 +1,7 @@
+// import { t } from 'i18next';
 import { ControllerInterface } from '../../interfaces/controller.interface';
 import { serverErrorHelper, successHelper } from '../../helpers/http.helper';
-import { HttpResponse } from '../../interfaces/http.interface';
-
+import { HttpRequest, HttpResponse } from '../../interfaces/http.interface';
 import { GetTestInterface } from '../../interfaces/useCaseDTO/getTest.interfaces';
 
 // import { Get, Route, Tags } from 'tsoa';
@@ -14,11 +14,17 @@ export class GetTest implements ControllerInterface {
   }
 
   // @Get('/')
-  async handle(): Promise<HttpResponse> {
+  /** Example translate implementation, from DB is received a msg_test string,
+   * then t is decoupled from httRequest obj, after that is translated and returned
+   * */
+  async handle(httpRequest: HttpRequest): Promise<HttpResponse> {
     try {
-      const test: any = await this.getTest.get();
+      const { t } = httpRequest;
+      const { content } = await this.getTest.get();
 
-      return successHelper(test);
+      return successHelper({
+        result: t(content),
+      });
     } catch (error) {
       throw serverErrorHelper(error);
     }

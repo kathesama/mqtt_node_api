@@ -18,6 +18,7 @@ export const AdapterRoute = (controller: ControllerInterface) => {
       language: req.language,
       user: req.user,
       cookies: cookie.parse(req.headers.cookie || ''),
+      t: req.t,
     };
 
     const httpResponse: HttpResponse = await controller.handle(httpRequest);

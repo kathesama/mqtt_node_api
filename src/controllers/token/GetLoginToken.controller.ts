@@ -25,24 +25,25 @@ export class GetLoginToken implements ControllerInterface {
 
   async handle(httpRequest: HttpRequest): Promise<HttpResponse> {
     try {
+      const { t } = httpRequest;
       const { email, password, deletePreviousTokens } = httpRequest.body;
       const option = 'login';
 
       const userDB: UserModel = await this.userService.getByEmail(email);
 
       if (!userDB || isNil(userDB)) {
-        return badRequestHelper(new Error('User not found'), ReasonPhrases.UNAUTHORIZED, StatusCodes.UNAUTHORIZED);
+        return badRequestHelper(new Error(t('msg_user_not_found')), ReasonPhrases.UNAUTHORIZED, StatusCodes.UNAUTHORIZED);
       }
 
       const isValidPassword = await this.dcrypt.encryptValidate(password, userDB.password);
       if (!isValidPassword) {
-        return badRequestHelper(new Error('Invalid password'), ReasonPhrases.UNAUTHORIZED, StatusCodes.UNAUTHORIZED);
+        return badRequestHelper(new Error(t('msg_invalid_password')), ReasonPhrases.UNAUTHORIZED, StatusCodes.UNAUTHORIZED);
       }
 
       // Se deben enviar los tokens de acceso y refresh generados, el refresh se almacena
       // y se valida su fingerprint para que corresponda con el refresh y devuelva un token de acceso
       try {
-        const tokenTupla = await this.handleToken.handleTokens(userDB, httpRequest.fingerprint.hash, option, deletePreviousTokens);
+        const tokenTupla = await this.handleToken.handleTokens(userDB, httpRequest.fingerprint.hash, option, t, deletePreviousTokens);
         return successHelper(tokenTupla);
       } catch (error) {
         logger.error(error);

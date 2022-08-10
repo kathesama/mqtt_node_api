@@ -11,6 +11,7 @@ import { tokenTypes } from '../domain/enums/token.enum';
 import { GenericError } from '../interfaces/http/errors';
 import { isNil } from 'lodash';
 import { TokenModel } from '../domain/models/Token.model';
+import { t } from '../main/utils/i18next.config';
 
 /**
  * Generate token
@@ -164,8 +165,8 @@ export const handleTokens = async (user: any, fingerprint: string, option: strin
   };
 
   const messages = {
-    totalGeneralReached: `User: ${user.email} have reached the maximum number of tokens per user. Close at least one open session for enable to open another more.`,
-    totalByFingerprintReached: `User ${user.email} was trying to create more than available tokens for the same device.`,
+    totalGeneralReached: String(t('msg_total_general_reached', user.email)),
+    totalByFingerprintReached: String(t('msg_exceed_tokens_each', user.email)),
   };
 
   // eslint-disable-next-line prefer-const

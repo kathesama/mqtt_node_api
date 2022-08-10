@@ -1,0 +1,27 @@
+[{
+  "_id": {
+    "$oid": "61057d45c10af6309cfe278b"
+  },
+  "isActive": true,
+  "role": "ADMIN_ROLE",
+  "createdAt": {
+    "$date": "2021-07-31T16:41:41.776Z"
+  },
+  "updatedAt": {
+    "$date": "2021-07-31T16:41:41.776Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "61057d5ec10af6309cfe278f"
+  },
+  "isActive": true,
+  "role": "USER_ROLE",
+  "createdAt": {
+    "$date": "2021-07-31T16:42:06.138Z"
+  },
+  "updatedAt": {
+    "$date": "2021-07-31T16:42:06.138Z"
+  },
+  "__v": 0
+}]

@@ -16,11 +16,11 @@ export class GetLogoutToken implements ControllerInterface {
   async handle(httpRequest: HttpRequest): Promise<HttpResponse> {
     try {
       const { deletePreviousTokens } = httpRequest.body;
-      const { user } = httpRequest;
+      const { user, t } = httpRequest;
       const option = 'logout';
 
       if (!user) {
-        return badRequestHelper('There is not user to logout', ReasonPhrases.UNAUTHORIZED, StatusCodes.UNAUTHORIZED);
+        return badRequestHelper(t('msg_no_user_logout'), ReasonPhrases.UNAUTHORIZED, StatusCodes.UNAUTHORIZED);
       }
 
       // const fingerprint = httpRequest.fingerprint.hash;

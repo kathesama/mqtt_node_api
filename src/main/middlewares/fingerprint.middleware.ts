@@ -1,23 +1,41 @@
 import Fingerprint from 'express-fingerprint';
 import { environmentConfig } from '../config';
 
-const userAgent: any = Fingerprint;
+const fingerPrint: any = Fingerprint;
 
-const params: any = {
-  parameters: [
-    // Defaults
-    userAgent.useragent,
-    userAgent.acceptHeaders,
-    // Fingerprint.geoip,
+const fingerprintMiddleware = (req: any, res: any, next: any) => {
+  const headers = req.headers;
+  const params: any = {
+    parameters: [
+      // Defaults
+      fingerPrint.acceptHeaders,
 
-    // personalized params
-    (next: any) => {
-      next(null, {
-        fingerKey: environmentConfig().serverConfig.SERVER_FINGERKEY,
-      });
-    },
-  ],
+      // personalized params
+      (next: any) => {
+        next(null, {
+          useragent: req.headers['user-agent'],
+        });
+      },
+      /* disabled for development
+      (next: any) => {
+         next(null, {
+           acceptLanguage: req.headers['accept-language'],
+        });
+       }, */
+      (next: any) => {
+        next(null, {
+          id: req.ip,
+        });
+      },
+      (next: any) => {
+        next(null, {
+          fingerKey: environmentConfig().serverConfig.SERVER_FINGERKEY,
+        });
+      },
+    ],
+  };
+
+  return Fingerprint(params)(req, res, next);
 };
 
-// reminding browser
-export const fingerprint = Fingerprint(params);
+export const fingerprint = fingerprintMiddleware;

@@ -15,6 +15,7 @@ class App {
   public app: any = null;
   private server: any = null;
   private client: any = null;
+  private reqObj: any = null;
 
   constructor() {
     this.config();

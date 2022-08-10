@@ -76,12 +76,13 @@ export class MakeResetPasswordFactorie implements ControllerInterface {
 
   async handle(httpRequest: HttpRequest): Promise<HttpResponse> {
     try {
+      const { t } = httpRequest;
       const { email } = httpRequest.body;
 
       const user: any = await this.handleUser.getOneByEmail(email);
 
       if (!user || !user.isActive) {
-        throw new GenericError('Account is disabled or User was delete', StatusCodes.UNAUTHORIZED, ReasonPhrases.UNAUTHORIZED);
+        throw new GenericError(t('msg_account_disabled'), StatusCodes.UNAUTHORIZED, ReasonPhrases.UNAUTHORIZED);
       }
 
       // Generate a Reset password token
@@ -111,6 +112,7 @@ export class MakeVerifyGoogleUserFactory implements ControllerInterface {
   async handle(httpRequest: HttpRequest): Promise<HttpResponse> {
     try {
       const option = 'login';
+      const { t } = httpRequest;
       const { token } = httpRequest.body;
       const ticket = await this.user.validate({
         idToken: token,
@@ -130,7 +132,7 @@ export class MakeVerifyGoogleUserFactory implements ControllerInterface {
       // Se deben enviar los tokens de acceso y refresh generados, el refresh se almacena
       // y se valida su fingerprint para que corresponda con el refresh y devuelva un token de acceso
       try {
-        const tokenTupla = await this.handleToken.handleTokens(userDB, httpRequest.fingerprint.hash, option, false);
+        const tokenTupla = await this.handleToken.handleTokens(userDB, httpRequest.fingerprint.hash, option, t, false);
 
         const { access, refresh } = tokenTupla;
         const expires = Number.parseInt(environmentConfig().jwtConfig.accessExpirationMinutes, 10) || 0;

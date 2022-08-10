@@ -7,6 +7,8 @@ declare global {
     interface Request {
       user?: Record<string, any>;
       language?: Record<string, any>;
+      fingerprint?: string;
+      t?: any;
     }
   }
 }
