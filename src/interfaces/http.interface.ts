@@ -6,6 +6,7 @@ export interface HttpResponse {
   body: any;
   cookie?: Cookie;
   message?: string;
+  headers?: any;
 }
 
 export interface HttpRequest {

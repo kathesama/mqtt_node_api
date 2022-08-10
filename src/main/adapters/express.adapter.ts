@@ -29,6 +29,7 @@ export const AdapterRoute = (controller: ControllerInterface) => {
       } = httpResponse;
 
       res.status(httpResponse.statusCode).cookie(name, value, options).json(httpResponse.body);
+      // res.status(httpResponse.statusCode).setHeader('Set-Cookie', cookie).json(httpResponse.body);
     } else {
       res.status(httpResponse.statusCode).json(httpResponse.body);
     }

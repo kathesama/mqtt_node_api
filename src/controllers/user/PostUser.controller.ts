@@ -147,7 +147,7 @@ export class MakeVerifyGoogleUserFactory implements ControllerInterface {
 
         const cookie: Cookie = environmentConfig().serverConfig.IS_COOKIE_HTTPONLY_BASED
           ? {
-              name: 'session',
+              name: 'sessionCookie',
               value: refresh['token'],
               ...options,
             }
